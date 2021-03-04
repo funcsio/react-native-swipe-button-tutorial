@@ -25,7 +25,7 @@ const H_RANGE = SWIPEABLE_DIMENSIONS + 2 * BUTTON_PADDING;
 const H_SWIPE_RANGE = BUTTON_WIDTH - 2 * BUTTON_PADDING - SWIPEABLE_DIMENSIONS;
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
-const App = ({onUnToggle, onToggle}) => {
+const SwipeButton = ({onUnToggle, onToggle}) => {
   // Animated value for X translation
   const X = useSharedValue(0);
   // Toggled State
@@ -164,4 +164,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default SwipeButton;
