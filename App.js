@@ -6,6 +6,7 @@ import SwipeButton from './SwipeButton';
 const App = () => {
   const [toggleState, setToggleState] = useState(false);
 
+  const handleToggle = (value) => setToggleState(value);
   return (
     <SafeAreaView>
       <View
@@ -14,10 +15,7 @@ const App = () => {
           {backgroundColor: toggleState ? '#222' : '#ebedee'},
         ]}>
         <MockUI />
-        <SwipeButton
-          onUnToggle={() => setToggleState(false)}
-          onToggle={() => setToggleState(true)}
-        />
+        <SwipeButton onToggle={handleToggle} />
         <MockUI />
       </View>
     </SafeAreaView>

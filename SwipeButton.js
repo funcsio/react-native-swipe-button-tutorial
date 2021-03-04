@@ -21,11 +21,11 @@ const BUTTON_HEIGHT = 100;
 const BUTTON_PADDING = 10;
 const SWIPEABLE_DIMENSIONS = BUTTON_HEIGHT - 2 * BUTTON_PADDING;
 
-const H_RANGE = SWIPEABLE_DIMENSIONS + 2 * BUTTON_PADDING;
+const H_WAVE_RANGE = SWIPEABLE_DIMENSIONS + 2 * BUTTON_PADDING;
 const H_SWIPE_RANGE = BUTTON_WIDTH - 2 * BUTTON_PADDING - SWIPEABLE_DIMENSIONS;
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
-const SwipeButton = ({onUnToggle, onToggle}) => {
+const SwipeButton = ({onToggle}) => {
   // Animated value for X translation
   const X = useSharedValue(0);
   // Toggled State
@@ -35,7 +35,7 @@ const SwipeButton = ({onUnToggle, onToggle}) => {
   const handleComplete = (isToggled) => {
     if (isToggled !== toggled) {
       setToggled(isToggled);
-      isToggled ? onToggle() : onUnToggle();
+      onToggle(isToggled);
     }
   };
 
@@ -74,7 +74,7 @@ const SwipeButton = ({onUnToggle, onToggle}) => {
     }),
     colorWave: useAnimatedStyle(() => {
       return {
-        width: H_RANGE + X.value,
+        width: H_WAVE_RANGE + X.value,
 
         opacity: interpolate(X.value, InterpolateXInput, [0, 1]),
       };
